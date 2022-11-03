@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Graph"
+             BindingContext="{Binding Source={RelativeSource Self}}"
+             x:DataType="local:MainPage"
+             x:Class="Graph.MainPage">
+
+        <Grid
+            RowDefinitions="Auto, Auto, Auto, *" Margin="20">
+
+        <Button
+                Grid.Row="0"
+                Text="{Binding ActionText}"
+                Clicked="LogInOut"
+                HorizontalOptions="Center" />
+
+        <Button
+                Grid.Row="1"
+                Text="Get User Info"
+                IsVisible="{Binding IsLoggedOn}"
+                Clicked="GetUserInfoBtn_Clicked"
+                HorizontalOptions="Center" />
+
+        <Button
+                Grid.Row="2"
+                Text="Get Folder and File Info"
+                IsVisible="{Binding IsLoggedOn}"
+                Clicked="GetFolderInfoBtn_Clicked"
+                HorizontalOptions="Center" />
+
+        <Border Grid.Row="3">
+            <CollectionView x:Name="msgView"
+                                ItemsSource="{Binding Messages}" 
+                                VerticalOptions="Fill" 
+                                EmptyView="Click to sign in"
+                                ItemsUpdatingScrollMode="KeepLastItemInView">
+            </CollectionView>
+        </Border>
+    </Grid>
+</ContentPage>
